@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<board schema_version="2.1" vendor="alinx.com/en" name="ax7z020b" display_name="AX7Z020B Development Board"
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<board schema_version="2.1" vendor="alinx.com" name="ax7z020b" display_name="AX7Z020B Development Board"
        url="https://alinx.com/en" preset_file="preset.xml">
 
     <!-- Image of the board -->
@@ -26,6 +26,10 @@
         <component name="part0" display_name="AX7Z020B" type="fpga" part_name="xc7z020clg400-2" pin_map_file="part0_pins.xml" vendor="xilinx" spec_url="www.xilinx.com">
             <description>FPGA part on the board</description>
             <interfaces>
+
+                <interface mode="master" name="ps7_fixedio" type="xilinx.com:display_processing_system7:fixedio_rtl:1.0" of_component="ps7_fixedio" preset_proc="ps7_preset">
+                </interface>
+<!-- 
                 <interface mode="master" name="btn" type="xilinx.com:interface:gpio_rtl:1.0" of_component="btn" preset_proc="push_buttons_4bits_preset">
                     <port_maps>
                         <port_map logical_port="TRI_I" physical_port="btn_tri_i" dir="in" left="3" right="0">
@@ -52,10 +56,6 @@
                     </port_maps>
                 </interface>
 
-                <interface mode="master" name="ps7_fixedio" type="xilinx.com:display_processing_system7:fixedio_rtl:1.0"
-                           of_component="ps7_fixedio" preset_proc="ps7_preset">
-                </interface>
-
                 <interface mode="slave" name="sys_clock" type="xilinx.com:signal:clock_rtl:1.0" of_component="sys_clock"
                            preset_proc="sys_clock_preset">
                     <port_maps>
@@ -69,7 +69,6 @@
                         <parameter name="frequency" value="50000000"/>
                     </parameters>
                 </interface>
-
 
                 <interface mode="master" name="hdmi_out" type="digilentinc.com:interface:tmds_rtl:1.0"
                            of_component="hdmi_out">
@@ -103,15 +102,18 @@
                             </pin_maps>
                         </port_map>
                     </port_maps>
-                </interface>
-
-                
-
+                </interface> 
+-->
                 <!-- J20 & J21 are not listed -->
 
             </interfaces>
         </component>
 
+        <component name="ps7_fixedio" display_name="ps7_fixedio" type="chip" sub_type="fixed_io" major_group="">
+            <description>AX7Z020B-PS</description>
+        </component>
+
+<!--
         <component name="btn" display_name="4 Buttons" type="chip" sub_type="push_button" major_group="GPIO">
             <description>Buttons 3 to 0</description>
         </component>
@@ -120,8 +122,7 @@
             <description>LEDs 3 to 0</description>
         </component>
 
-        <component name="ps7_fixedio" display_name="ps7_fixedio" type="chip" sub_type="fixed_io" major_group=""/>
-
+       
         <component name="sys_clock" display_name="System Clock" type="chip" sub_type="system_clock"
                    major_group="Clocks">
             <description>3.3V Single-Ended 50 MHz oscillator used as system clock on the board</description>
@@ -130,7 +131,7 @@
         <component name="hdmi_out" display_name="HDMI out" type="chip" sub_type="fixed_io" major_group="HDMI">
             <description>HDMI Out (Requires Digilent's TMDS interface)</description>
         </component>
-
+-->
     </components>
 
     <jtag_chains>
@@ -139,6 +140,7 @@
         </jtag_chain>
     </jtag_chains>
 
+<!-- 
     <connections>
         <connection name="part0_btn" component1="part0" component2="btn">
             <connection_map name="part0_btn_1" c1_st_index="0" c1_end_index="3" c2_st_index="0"
@@ -165,4 +167,5 @@
                             c2_end_index="0"/>
         </connection>
     </connections>
+ -->
 </board>

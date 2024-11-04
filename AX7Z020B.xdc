@@ -3,6 +3,29 @@
 ## - uncomment the lines corresponding to used pins
 ## - rename the used ports (in each line, after get_ports) according to the top level signal names in the project
 
+
+##  ========== Voltage Level: ==========
+##    By default the VCCIO35 is set to 3.3V
+##
+##    If J28 has a jumper-cap installed, VCCIO35 = 2.5V
+##    If J29 has a jumper-cap installed, VCCIO35 = 1.8V
+##    If J28 & J29 are not connected, VCCIO35 = 3.3V (Default)
+##  
+##  ========== PS PERIPHERALS: ==========
+##    * DDR (MT41K256M16TW-107)
+##    * QSPI (MIO1:MIO6)
+##    * CAN0 (MIO10-MIO11)
+##    * CAN1 (MIO12-MIO13)
+##    * RS485 (MIO9-MIO14-MIO15)
+##    * ETH (MIO16:MIO27-MIO52-MIO53)
+##    * USB (MIO28:MIO39-MIO46)
+##    * UART(MIO48-MIO49)
+##    * SD (MIO40:MIO45-MIO47)
+##    * EEPROM I2C (MIO50-MIO51)
+##    * RT-CLK I2C (MIO50-MIO51-MIO7)
+
+
+
 ## PL SYSTEM CLK (50 MHz)
 #set_property -dict { PACKAGE_PIN U18    IOSTANDARD LVCMOS33 } [get_ports { sys_clock }];
 #create_clock -add -name sys_clock_pin -period 20 [get_ports { sys_clock }];
@@ -14,10 +37,10 @@
 #set_property -dict { PACKAGE_PIN L16    IOSTANDARD LVCMOS33 } [get_ports { btn[3] }];
 
 ## LEDS
-#set_property -dict { PACKAGE_PIN J14    IOSTANDARD LVCMOS33 } [get_ports { led[0] }];
-#set_property -dict { PACKAGE_PIN K14    IOSTANDARD LVCMOS33 } [get_ports { led[1] }];
-#set_property -dict { PACKAGE_PIN J18    IOSTANDARD LVCMOS33 } [get_ports { led[2] }];
-#set_property -dict { PACKAGE_PIN H18    IOSTANDARD LVCMOS33 } [get_ports { led[3] }];
+set_property -dict { PACKAGE_PIN J14    IOSTANDARD LVCMOS33 } [get_ports { led[0] }];
+set_property -dict { PACKAGE_PIN K14    IOSTANDARD LVCMOS33 } [get_ports { led[1] }];
+set_property -dict { PACKAGE_PIN J18    IOSTANDARD LVCMOS33 } [get_ports { led[2] }];
+set_property -dict { PACKAGE_PIN H18    IOSTANDARD LVCMOS33 } [get_ports { led[3] }];
 
 
 ## HDMI OUT (Check iostandard!)
